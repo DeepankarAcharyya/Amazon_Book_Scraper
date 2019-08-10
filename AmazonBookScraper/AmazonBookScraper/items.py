@@ -14,4 +14,4 @@ class AmazonbookscraperItem(scrapy.Item):
     author=scrapy.Field()
     price=scrapy.Field()
     image_link=scrapy.Field()
-    pass
+    

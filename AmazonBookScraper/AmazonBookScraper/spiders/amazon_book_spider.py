@@ -6,17 +6,22 @@ class AmazonBookSpiderSpider(scrapy.Spider):
     name = 'amazon_book'
 
     start_urls = [
-       'https://www.amazon.com/s?i=stripbooks&bbn=1000&rh=n%3A283155%2Cn%3A%211000%2Cn%3A18%2Cp_n_feature_nine_browse-bin%3A3291437011%2Cp_n_feature_browse-bin%3A2656022011%2Cp_n_condition-type%3A1294423011&dc&fst=as%3Aoff&qid=1565461357&rnid=1000&ref=sr_nr_n_20',
+       'https://www.amazon.in/s?k=books+thriller+and+mystery&i=stripbooks&rh=n%3A976389031%2Cn%3A1318161031%2Cp_72%3A1318476031&dc&qid=1565464758&rnid=1318475031&ref=sr_nr_p_72_1',
     ]
     
-
     def parse(self, response):
         items=AmazonbookscraperItem()
 
-        title=response.css(".a-color-base.a-text-normal").extract()
-        author=response.css(".a-color-secondary .a-size-base.a-link-normal").css('::text').extract()
-        price=response.css(".a-spacing-top-small .a-price-fraction , .a-spacing-top-small .a-price-whole").css('::text').extract()
-        image=response.css(".s-image-fixed-height").css('::attr(src)').extract()
+        #selectors:
+        #title:         .a-size-medium
+        #author:        .a-spacing-none .a-color-secondary .a-size-base.a-link-normal
+        #price:         .a-spacing-top-small .a-price:nth-child(1) .a-price-whole
+        #image:         .a-spacing-none .s-image
+
+        title =response.css(".a-size-medium").css("::text").extract()
+        author=response.css(".a-spacing-none .a-color-secondary .a-size-base.a-link-normal").css('::text').extract().replace('\n',"").strip()
+        price =response.css(".a-spacing-top-small .a-price:nth-child(1) .a-price-whole").css('::text').extract()
+        image =response.css(".a-spacing-none .s-image").css('::attr(src)').extract()
 
         items['title']=title
         items['author']=author
