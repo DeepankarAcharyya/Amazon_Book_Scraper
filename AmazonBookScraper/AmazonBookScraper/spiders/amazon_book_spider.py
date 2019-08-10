@@ -6,7 +6,7 @@ class AmazonBookSpiderSpider(scrapy.Spider):
     name = 'amazon_book'
 
     start_urls = [
-       'https://www.amazon.in/s?k=books+thriller+and+mystery&i=stripbooks&rh=n%3A976389031%2Cn%3A1318161031%2Cp_72%3A1318476031&dc&qid=1565464758&rnid=1318475031&ref=sr_nr_p_72_1',
+       'https://www.amazon.in/s?i=stripbooks&bbn=1318161031&rh=n%3A976389031%2Cn%3A976390031%2Cn%3A1318161031%2Cp_n_binding_browse-bin%3A1318376031%2Cp_n_feature_three_browse-bin%3A9141482031%2Cp_n_availability%3A1318484031%2Cp_n_condition-type%3A8609960031%2Cp_n_publication_date%3A2684819031&dc&fst=as%3Aoff&qid=1565468209&rnid=2684818031&ref=sr_nr_p_n_publication_date_1',
     ]
     
     def parse(self, response):
