@@ -17,10 +17,11 @@ NEWSPIDER_MODULE = 'AmazonBookScraper.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'AmazonBookScraper (+http://www.yourdomain.com)'
-#USER_AGENT='Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+USER_AGENT='Googlebot/2.1 ( http://www.googlebot.com/bot.html)'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
+#PROXY_POOL_ENABLED = True
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
@@ -50,6 +51,12 @@ ROBOTSTXT_OBEY = True
 #    'AmazonBookScraper.middlewares.AmazonbookscraperSpiderMiddleware': 543,
 #}
 
+# DOWNLOADER_MIDDLEWARES = {
+#     # ...
+#     'scrapy_proxy_pool.middlewares.ProxyPoolMiddleware': 610,
+#     'scrapy_proxy_pool.middlewares.BanDetectionMiddleware': 620,
+#     # ...
+# }
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
@@ -64,9 +71,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'AmazonBookScraper.pipelines.AmazonbookscraperPipeline': 300,
-#}
+ITEM_PIPELINES = {
+     'AmazonBookScraper.pipelines.AmazonbookscraperPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
